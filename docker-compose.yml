@@ -1,0 +1,18 @@
+version: '3'
+services:
+  ros2_waveshare:
+    build: .
+    container_name: ros2_waveshare
+    network_mode: host
+    privileged: true
+    devices:
+      - "/dev:/dev"
+    volumes:
+      - /dev:/dev
+      - ./src:/ros2_ws/src
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    command: bash
+    stdin_open: true
+    tty: true
